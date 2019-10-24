@@ -118,7 +118,7 @@ def build_tree(df, cols, predict_attr):
         return tree
 
 
-# Given a instance of a training data, make a prediction of healthy or colic
+# Given a instance of a training data, make a prediction of true or false
 # based on the Decision Tree
 # Assumes all data has been cleaned (i.e. no NULL data)
 def predict(node, row_df):
@@ -146,8 +146,6 @@ def test_predictions(root, df):
     return round(num_correct / num_data, 2)
 
 
-# Cleans the input data, removes 'Diagnosis' column and adds 'Outcome' column
-# where 0 means healthy and 1 means colic
 def clean(csv_file_name):
     df = pd.read_csv(csv_file_name, header=None)
     df.columns = ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay',  'OperatingSystems',
@@ -159,13 +157,13 @@ def clean(csv_file_name):
 
 def main():
     # An example use of 'build_tree' and 'predict'
-    df_train = clean('horseTrain')
+    df_train = clean('TrainingSet')
     attributes = ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'OperatingSystems',
                   'Browser', 'Region', 'TrafficType', 'VisitorType', 'Weekend']
     root = build_tree(df_train, attributes, 'Outcome')
 
     print("Accuracy of test data")
-    df_test = clean('horseTest')
+    df_test = clean('TestingSet')
     print(str(test_predictions(root, df_test) * 100.0) + '%')
 
 
