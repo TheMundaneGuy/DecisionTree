@@ -89,17 +89,5 @@ The script will automatically:
 
 -Display final accuracy metrics
 
-# 📌 Example Use-Case
 
-This project is designed to showcase:
-
-Understanding of ML algorithms without libraries
-
-Ability to implement recursive data structures
-
-Knowledge of entropy, information gain, and tree-based models
-
-Real-world data preprocessing techniques
-
-Perfect for portfolios, ML job applications, or academic learning.
 
